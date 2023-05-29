@@ -38,7 +38,7 @@ var uSpeed = 0.001;
 // var setcolor = 0xF02050;
 // var setcolor = 0xF2F111;
 // var setcolor = 0xFF6347;
-var setcolor = 0x0000ff;
+var setcolor = 0x5044f8;
 
 scene.background = new THREE.Color(setcolor);
 scene.fog = new THREE.Fog(setcolor, 10, 16);
