@@ -42,11 +42,11 @@ if(screen.width < 600){
 // var setcolor = 0xF02050;
 // var setcolor = 0xF2F111;
 // var setcolor = 0xFF6347;
-var setcolor = 0x8da5f7;
+var setcolor = 0xffffff;
 
 scene.background = new THREE.Color(setcolor);
 scene.fog = new THREE.Fog(setcolor, 10, 16);
-//scene.fog = new THREE.FogExp2(setcolor, 0.05);
+scene.fog = new THREE.FogExp2(setcolor, 0.05);
 //----------------------------------------------------------------- RANDOM Function
 function mathRandom(num = 8) {
   var numValue = - Math.random() * num + Math.random() * num;
@@ -62,7 +62,7 @@ function setTintColor() {
     setTintNum = true;
     var setColor = 0x000000;
   };
-  // setColor = 0xffa500;
+  //setColor = 0x222222;
   return setColor;
 };
 
@@ -71,19 +71,19 @@ function setTintColor() {
 function init() {
   var segments = 2;
   for (var i = 1; i<100; i++) {
-    var geometry = new THREE.CubeGeometry(1,1,0,segments,segments,segments);
+    var geometry = new THREE.CubeGeometry(1,0,0,segments,segments,segments);
     var material = new THREE.MeshStandardMaterial({
       color:setTintColor(),
       wireframe:false,
-      opacity:0.6,
-      transparent:true,
-      roughness: 0.3,
-      metalness: 1,
+      //opacity:0.9,
+      //transparent:true,
+      //roughness: 0.3,
+      //metalness: 1,
       shading: THREE.SmoothShading,
-      // shading:THREE.FlatShading,
+      //shading:THREE.FlatShading,
       side:THREE.DoubleSide});
     var wmaterial = new THREE.MeshLambertMaterial({
-      color:0x000000,
+      color:0xFFFFFF,
       wireframe:true,
       transparent:true,
       opacity: 0.03,
@@ -103,7 +103,7 @@ function init() {
     //floor.scale.x = floor.scale.z = 1+mathRandom(0.33);
     floor.scale.y = 0.05;//+mathRandom(0.5);
     cube.scale.y = 0.1+Math.abs(mathRandom(8));
-    TweenMax.to(cube.scale, 1, {y:cube.rotationValue, repeat:-1, yoyo:true, delay:i*0.005, ease:Power1.easeInOut});
+    //TweenMax.to(cube.scale, 1, {y:cube.rotationValue, repeat:-1, yoyo:true, delay:i*0.005, ease:Power1.easeInOut});
     /*cube.setScale = 0.1+Math.abs(mathRandom());
     
     TweenMax.to(cube.scale, 4, {y:cube.setScale, ease:Elastic.easeInOut, delay:0.2*i, yoyo:true, repeat:-1});
@@ -111,7 +111,7 @@ function init() {
     
     var cubeWidth = 0.9;
     cube.scale.x = cube.scale.z = cubeWidth+mathRandom(1-cubeWidth);
-    // cube.position.y = cube.scale.y / 2;
+    //cube.position.y = cube.scale.y / 2;
     cube.position.x = Math.round(mathRandom());
     cube.position.z = Math.round(mathRandom());
     
@@ -266,14 +266,14 @@ var animate = function() {
   var cityRotation = Math.sin(Date.now() / 5000) * 13;
   //city.rotation.x = cityRotation * Math.PI / 180;
   
-  console.log(city.rotation.x);
-  camera.position.y -= (-(mouse.y * 20) - camera.rotation.y) * uSpeed;;
+  //console.log(city.rotation.x);
+  //camera.position.y -= (-(mouse.y * 20) - camera.rotation.y) * uSpeed;;
   
   for ( let i = 0, l = town.children.length; i < l; i ++ ) {
     var object = town.children[ i ];
     object.scale.y = Math.sin(time*50) * object.rotationValue;
-    // object.rotation.y = (Math.sin((time/object.rotationValue) * Math.PI / 180) * 180);
-    // object.rotation.z = (Math.cos((time/object.rotationValue) * Math.PI / 180) * 180);
+    //object.rotation.y = (Math.sin((time/object.rotationValue) * Math.PI / 180) * 180);
+    //object.rotation.z = (Math.cos((time/object.rotationValue) * Math.PI / 180) * 180);
   }
   
   smoke.rotation.y += 0.01;
